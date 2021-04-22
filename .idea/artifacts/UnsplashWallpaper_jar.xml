@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="UnsplashWallpaper:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/UnsplashWallpaper_jar</output-path>
+    <root id="archive" name="UnsplashWallpaper.jar">
+      <element id="module-output" name="UnsplashWallpaper" />
+    </root>
+  </artifact>
+</component>
