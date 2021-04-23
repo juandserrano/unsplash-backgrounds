@@ -18,7 +18,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         final String ORIENTATION = "landscape";
         final String QUERY = "Dark%20Background%20Ultrawide";
-        final String ACCESS_KEY = "b-4UaQV4dLZca8HRSVmc4Yq5GCrlv4REdDUL794S3RI";
+        final String ACCESS_KEY = Files.readString(Paths.get("/Users/juan/dev/UnsplashWallpaper/.env")).split("=")[1];
 
         int alternator = 1;
         HttpResponse response;
@@ -37,16 +37,18 @@ public class Main {
                 try(InputStream in = new URL(rawURL).openStream()){
                     Files.copy(in, Paths.get("/Users/juan/Pictures/Background1.jpg"), StandardCopyOption.REPLACE_EXISTING);
                 }
-
-                setWallpaper(new File("/Users/juan/Pictures/Background1.jpg"));
+                File file = new File("/Users/juan/Pictures/Background1.jpg");
+                setWallpaper(file);
+                file = null;
                 alternator = 2;
                 System.out.println("Changed to B1");
             } else {
                 try(InputStream in = new URL(rawURL).openStream()){
                     Files.copy(in, Paths.get("/Users/juan/Pictures/Background2.jpg"), StandardCopyOption.REPLACE_EXISTING);
                 }
-
-                setWallpaper(new File("/Users/juan/Pictures/Background2.jpg"));
+                File file = new File("/Users/juan/Pictures/Background2.jpg");
+                setWallpaper(file);
+                file = null;
                 alternator = 1;
                 System.out.println("Changed to B2");
             }
@@ -55,8 +57,7 @@ public class Main {
         }
 
     }
-    public static void setWallpaper(File file)
-            throws Exception {
+    public static void setWallpaper(File file) throws Exception {
         String[] as = {
                 "osascript",
                 "-e", "tell application \"Finder\"",
